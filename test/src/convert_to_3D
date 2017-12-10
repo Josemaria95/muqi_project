@@ -1,0 +1,21 @@
+#!/usr/bin/env python
+import rospy
+#import sensor_msgs.point_cloud2 as pc2
+from sensor_msgs.msg import PointCloud2
+from sensor_msgs.msg import LaserScan
+from laser_geometry import LaserProjection
+
+import numpy as np
+
+def callback(data_scan):
+
+	cloud_out = projector.projectLaser(data_scan, -1.0,LaserProjection.ChannelOption.INDEX)
+	pub.publish(cloud_out)
+
+rospy.init_node("convert2Dto3D")
+rospy.Subscriber("/scan",LaserScan, callback)
+pub = rospy.Publisher("/cloud_3D", PointCloud2, queue_size=10)
+projector = LaserProjection()
+
+
+rospy.spin()

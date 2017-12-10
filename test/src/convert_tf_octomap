@@ -1,0 +1,56 @@
+#!/usr/bin/env python
+
+import rospy
+from std_msgs.msg import Float32, Float64
+from tf2_msgs.msg import TFMessage
+from sensor_msgs.msg import Imu
+from geometry_msgs.msg import PoseStamped, TransformStamped
+
+tf = TFMessage()
+flag_slam, flag_imu, flag_alt = False, False, False
+
+bufferTransform = TransformStamped()
+def callback_slam(data_pose_slam):
+	global tf, flag_slam
+	bufferTransform.transform.translation.x = data_pose_slam.pose.position.x
+	bufferTransform.transform.translation.y = data_pose_slam.pose.position.y
+	flag_slam = True
+
+def callback_imu(data_imu):
+	global tf, flag_imu
+	bufferTransform.transform.rotation.x = data_imu.orientation.x
+	bufferTransform.transform.rotation.y = data_imu.orientation.y
+	bufferTransform.transform.rotation.z = data_imu.orientation.z
+	bufferTransform.transform.rotation.w = data_imu.orientation.w
+	flag_imu = True
+
+def callback_alt(data_alt):
+	global tf, flag_alt
+	bufferTransform.transform.translation.z = data_alt.data
+	flag_alt = True
+
+
+rospy.init_node("transform_tf_octomap")
+rospy.Subscriber("/slam_out_pose",PoseStamped,callback_slam)
+rospy.Subscriber("/mavros/imu/data",Imu,callback_imu)
+rospy.Subscriber("/mavros/global_position/rel_alt",Float64,callback_alt)
+pub = rospy.Publisher("/tf_octomap",TFMessage,queue_size=10)
+rate = rospy.Rate(10)
+
+while not rospy.is_shutdown():
+	if flag_alt and flag_imu and flag_slam:
+
+		bufferTransform.header.frame_id = "scan_matcher"
+		bufferTransform.header.stamp = rospy.Time.now()
+		bufferTransform.child_frame_id = "octomap_tf"
+
+		tf.transforms.append(bufferTransform)
+		pub.publish(tf)
+
+		tf = TFMessage()
+		bufferTransform = TransformStamped()
+		flag_imu = False
+		flag_slam = False
+		flag_alt = False
+
+	rate.sleep()
