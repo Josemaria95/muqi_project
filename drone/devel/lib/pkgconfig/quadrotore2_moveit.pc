@@ -1,0 +1,8 @@
+prefix=/home/josemaria/dev/drone/devel
+
+Name: quadrotore2_moveit
+Description: Description of quadrotore2_moveit
+Version: 0.2.0
+Cflags: 
+Libs: -L/home/josemaria/dev/drone/devel/lib 
+Requires: 

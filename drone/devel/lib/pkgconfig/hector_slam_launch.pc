@@ -1,0 +1,8 @@
+prefix=/home/josemaria/dev/drone/devel
+
+Name: hector_slam_launch
+Description: Description of hector_slam_launch
+Version: 0.3.4
+Cflags: 
+Libs: -L/home/josemaria/dev/drone/devel/lib 
+Requires: 

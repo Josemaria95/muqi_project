@@ -1,0 +1,8 @@
+prefix=/home/josemaria/dev/drone/install
+
+Name: hector_map_tools
+Description: Description of hector_map_tools
+Version: 0.3.4
+Cflags: -I/home/josemaria/dev/drone/install/include
+Libs: -L/home/josemaria/dev/drone/install/lib 
+Requires: nav_msgs

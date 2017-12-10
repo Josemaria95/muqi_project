@@ -1,0 +1,8 @@
+prefix=/home/josemaria/dev/drone/devel
+
+Name: hector_map_server
+Description: Description of hector_map_server
+Version: 0.3.4
+Cflags: 
+Libs: -L/home/josemaria/dev/drone/devel/lib 
+Requires: 

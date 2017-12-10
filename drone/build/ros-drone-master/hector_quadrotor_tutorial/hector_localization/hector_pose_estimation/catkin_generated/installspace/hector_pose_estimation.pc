@@ -1,0 +1,8 @@
+prefix=/home/josemaria/dev/drone/install
+
+Name: hector_pose_estimation
+Description: Description of hector_pose_estimation
+Version: 0.2.1
+Cflags: -I/home/josemaria/dev/drone/install/include
+Libs: -L/home/josemaria/dev/drone/install/lib -lhector_pose_estimation_nodelet -lhector_pose_estimation_node
+Requires: hector_pose_estimation_core nodelet sensor_msgs geometry_msgs nav_msgs tf message_filters

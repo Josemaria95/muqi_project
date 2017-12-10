@@ -1,0 +1,8 @@
+prefix=/home/josemaria/dev/drone/devel
+
+Name: hector_map_tools
+Description: Description of hector_map_tools
+Version: 0.3.4
+Cflags: -I/home/josemaria/dev/drone/src/ros-drone-master/hector_quadrotor_tutorial/hector_slam/hector_map_tools/include
+Libs: -L/home/josemaria/dev/drone/devel/lib 
+Requires: nav_msgs

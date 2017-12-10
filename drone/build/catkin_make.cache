@@ -1,0 +1,2 @@
+autonomous-flight-ros/ROS - Indigo/action_controller:autonomous-flight-ros/ROS - Indigo/autonomous-quadrotor:autonomous-flight-ros/ROS - Indigo/moveit_simple_controller_manager:autonomous-flight-ros/ROS - Indigo/pr2_teleop:autonomous-flight-ros/ROS - Indigo/quadrotore2_moveit
+-DCATKIN_DEVEL_PREFIX=/home/josemaria/dev/drone/devel -DCMAKE_INSTALL_PREFIX=/home/josemaria/dev/drone/install -G Unix Makefiles

@@ -1,0 +1,8 @@
+prefix=/home/josemaria/dev/drone/install
+
+Name: hector_uav_msgs
+Description: Description of hector_uav_msgs
+Version: 0.3.5
+Cflags: -I/home/josemaria/dev/drone/install/include
+Libs: -L/home/josemaria/dev/drone/install/lib 
+Requires: message_runtime std_msgs

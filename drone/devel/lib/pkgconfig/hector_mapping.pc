@@ -1,0 +1,8 @@
+prefix=/home/josemaria/dev/drone/devel
+
+Name: hector_mapping
+Description: Description of hector_mapping
+Version: 0.3.4
+Cflags: -I/home/josemaria/dev/drone/devel/include -I/home/josemaria/dev/drone/src/ros-drone-master/hector_quadrotor_tutorial/hector_slam/hector_mapping/include -I/usr/include/eigen3
+Libs: -L/home/josemaria/dev/drone/devel/lib 
+Requires: roscpp nav_msgs visualization_msgs tf message_filters laser_geometry tf_conversions message_runtime
